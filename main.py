@@ -3,6 +3,7 @@
 # throughout this file
 import pygame
 from constants import *
+from player import *
 
 def main():
     
@@ -28,6 +29,8 @@ def main():
         
         clock.tick(60)
         dt = clock.tick(60) / 1000
+        
+        Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
 if __name__ == "__main__":
     main()
