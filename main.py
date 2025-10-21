@@ -25,7 +25,7 @@ def main():
     clock = pygame.time.Clock() #game clock
     dt = 0
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2) #set the player position
-    asteroids = AsteroidField()
+    asteroid_rock = AsteroidField()
 
     
     print("Starting Asteroids!")
@@ -42,12 +42,14 @@ def main():
         #player.draw(screen)
         for item in drawable:
             item.draw(screen)
+        
+        for item in asteroids:
+            item.draw(screen)
             
         #player.update(dt)
         updatable.update(dt)
         
         pygame.display.flip()
-        
         
         clock.tick(60)
         dt = clock.tick(60) / 1000
