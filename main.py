@@ -2,6 +2,7 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+import sys
 from constants import *
 from player import *
 from asteroid import *
@@ -48,6 +49,11 @@ def main():
             
         #player.update(dt)
         updatable.update(dt)
+        
+        for rock in asteroids:
+            if player.collision(rock) is True:
+                print("Game Over!")
+                sys.exit()
         
         pygame.display.flip()
         
