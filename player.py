@@ -31,7 +31,7 @@ class Player(CircleShape):
         self.rotation += PLAYER_TURN_SPEED * dt
     #This method is used to rotate the player
     def shoot(self):
-        player_shot = Shot(self.x, self.y, SHOT_RADIUS)
+        player_shot = Shot(self.position.x, self.position.y, SHOT_RADIUS)
         player_shot.velocity += pygame.Vector2(0,1).rotate(self.rotation) * PLAYER_SHOT_SPEED
         
     
