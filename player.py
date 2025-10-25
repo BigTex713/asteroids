@@ -9,6 +9,7 @@ class Player(CircleShape):
         self.x = x
         self.y = y
         self.rotation = 0
+        self.shot_timer = 0
         
     
     # in the player class
@@ -31,12 +32,14 @@ class Player(CircleShape):
         self.rotation += PLAYER_TURN_SPEED * dt
     #This method is used to rotate the player
     def shoot(self):
-        player_shot = Shot(self.position.x, self.position.y, SHOT_RADIUS)
+ 
+        player_shot = Shot(self.position.x, self.position. y, SHOT_RADIUS)
         player_shot.velocity += pygame.Vector2(0,1).rotate(self.rotation) * PLAYER_SHOT_SPEED
         
     
     def update(self, dt):
         keys = pygame.key.get_pressed()
+        
 
         if keys[pygame.K_a]:
             self.rotate(-dt)
@@ -47,4 +50,9 @@ class Player(CircleShape):
         if keys[pygame.K_s]:
             self.move(-dt)
         if keys[pygame.K_SPACE]:
-            self.shoot()
+            if self.shot_timer > 0:
+                self.shot_timer -= dt
+            else:
+                self.shoot()
+                self.shot_timer = PLAYER_SHOOT_COOLDOWN
+            
