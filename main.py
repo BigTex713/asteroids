@@ -57,6 +57,12 @@ def main():
                 print("Game Over!")
                 sys.exit()
         
+        for rock in asteroids:
+            for shot in shots:
+                if shot.collision(rock):
+                    shot.kill()
+                    rock.split()
+        
         pygame.display.flip()
         
         clock.tick(60)
